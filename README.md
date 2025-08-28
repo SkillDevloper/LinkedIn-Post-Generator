@@ -22,7 +22,10 @@ A lightweight, AI-powered tool for creating professional LinkedIn posts with eas
 
 ## 🚀 UI ScreenShort
 
-![Screenshot](https://via.placeholder.com/800x450.png?text=LinkedIn+Post+Generator+Screenshot)
+![Screenshot](https://github.com/SkillDevloper/LinkedIn-Post-Generator/blob/main/Screenshort/1.jpg)
+![Screenshot](https://github.com/SkillDevloper/LinkedIn-Post-Generator/blob/main/Screenshort/2.jpg)
+![Screenshot](https://github.com/SkillDevloper/LinkedIn-Post-Generator/blob/main/Screenshort/3.jpg)
+![Screenshot](https://github.com/SkillDevloper/LinkedIn-Post-Generator/blob/main/Screenshort/4.jpg)
 
 ---
 
