@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Post Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon"><i class="fab fa-linkedin"></i></div>
+                <div class="logo-text">LinkedIn Post Generator</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-tab="dashboard">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-tab="generator">Generator</a></li>
+                    <li><a href="#" class="nav-link" data-tab="editor">Editor</a></li>
+                    <li><a href="#" class="nav-link" data-tab="settings">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Create New Post</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">What would you like to post about?</label>
+                        <input type="text" id="topic"
+                            placeholder="Enter a topic (e.g., AI in healthcare, remote work tips, etc.)">
+                    </div>
+                    <div class="form-group">
+                        <label for="tone">Select Tone</label>
+                        <select id="tone">
+                            <option value="professional">Professional</option>
+                            <option value="technical">Technical</option>
+                            <option value="casual">Casual</option>
+                        </select>
+                    </div>
+                    <button id="generate-btn" class="btn"><i class="fas fa-magic"></i> Generate Post</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Posts</h2>
+                    </div>
+                    <div class="history-list" id="recent-posts">
+                        <!-- Recent posts will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generator Tab -->
+            <div id="generator" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">AI-Generated Post</h2>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-header">
+                            <div class="avatar"></div>
+                            <div class="user-info">
+                                <h3>Daniyal Shahid</h3>
+                                <p>Software Engineering Student | Full Stack Web Developer | UI/UX Designer | Ethical
+                                    Hacking (CEH v13)</p>
+                            </div>
+                        </div>
+                        <div class="preview-content" id="generated-content">
+                            Your AI-generated post will appear here. Enter a topic and click "Generate Post" to get
+                            started.
+                        </div>
+                        <div class="hashtags" id="hashtags-container">
+                            <span class="hashtag">#AI</span>
+                            <span class="hashtag">#Tech</span>
+                            <span class="hashtag">#Innovation</span>
+                        </div>
+                        <div class="preview-actions">
+                            <div class="preview-action"><i class="far fa-heart"></i> Like</div>
+                            <div class="preview-action"><i class="far fa-comment"></i> Comment</div>
+                            <div class="preview-action"><i class="far fa-share-square"></i> Share</div>
+                            <div class="preview-action"><i class="far fa-paper-plane"></i> Send</div>
+                        </div>
+                    </div>
+                    <div class="flex" style="margin-top: 20px;">
+                        <button id="generate-again-btn" class="btn btn-outline"><i class="fas fa-sync"></i> Generate
+                            Again</button>
+                        <button id="edit-post-btn" class="btn"><i class="fas fa-edit"></i> Edit Post</button>
+                        <button id="copy-post-btn" class="btn"><i class="fas fa-copy"></i> Copy to Clipboard</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">SEO & Hashtag Suggestions</h2>
+                    </div>
+                    <div id="seo-suggestions">
+                        <p>SEO keywords and hashtag suggestions will appear here after generating a post.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor Tab -->
+            <div id="editor" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Edit Your Post</h2>
+                    </div>
+                    <div class="toolbar">
+                        <button class="toolbar-btn" data-command="bold"><i class="fas fa-bold"></i></button>
+                        <button class="toolbar-btn" data-command="italic"><i class="fas fa-italic"></i></button>
+                        <button class="toolbar-btn" data-command="underline"><i class="fas fa-underline"></i></button>
+                        <button class="toolbar-btn" data-command="insertUnorderedList"><i
+                                class="fas fa-list-ul"></i></button>
+                        <button class="toolbar-btn" data-command="insertOrderedList"><i
+                                class="fas fa-list-ol"></i></button>
+                        <button class="toolbar-btn" id="add-emoji"><i class="far fa-smile"></i></button>
+                    </div>
+                    <div class="form-group">
+                        <div id="editable-content" contenteditable="true"
+                            style="min-height: 200px; border: 1px solid #ddd; padding: 15px; border-radius: 6px;">
+                            Edit your post here. Use the formatting tools above to style your content.
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button id="save-edits-btn" class="btn btn-success"><i class="fas fa-save"></i> Save
+                            Changes</button>
+                        <button id="download-txt" class="btn"><i class="fas fa-download"></i> Download as TXT</button>
+                        <button id="download-pdf" class="btn"><i class="fas fa-file-pdf"></i> Export as PDF</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Image Suggestions</h2>
+                    </div>
+                    <div class="image-suggestions">
+                        <div class="image-item">
+                            <img src="https://images.unsplash.com/photo-1677442135135-416f8aa26a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
+                                alt="AI Image">
+                            <div class="image-overlay">AI Technology</div>
+                        </div>
+                        <div class="image-item">
+                            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
+                                alt="Office Image">
+                            <div class="image-overlay">Remote Work</div>
+                        </div>
+                        <div class="image-item">
+                            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
+                                alt="Networking Image">
+                            <div class="image-overlay">Networking</div>
+                        </div>
+                        <div class="image-item">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
+                                alt="Development Image">
+                            <div class="image-overlay">Development</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content">
+                <div class="card api-key-container">
+                    <div class="card-header">
+                        <h2 class="card-title">API Configuration</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="api-key">OpenAI/DeepSeek API Key</label>
+                        <div class="api-form">
+                            <input type="password" id="api-key" placeholder="Enter your API key">
+                            <button id="save-api-key" class="btn">Save</button>
+                        </div>
+                        <p style="margin-top: 10px; font-size: 14px; color: var(--text-light);">
+                            Your API key is stored locally in your browser and is never sent to our servers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Export Options</h2>
+                    </div>
+                    <p>Download your posts in various formats:</p>
+                    <div class="export-options">
+                        <button id="export-txt" class="btn"><i class="fas fa-file-alt"></i> Text File (TXT)</button>
+                        <button id="export-pdf" class="btn"><i class="fas fa-file-pdf"></i> PDF Document</button>
+                        <button id="export-docx" class="btn"><i class="fas fa-file-word"></i> Word Document
+                            (DOCX)</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Data Management</h2>
+                    </div>
+                    <p>Manage your locally stored data:</p>
+                    <div class="flex" style="margin-top: 15px;">
+                        <button id="clear-history" class="btn btn-outline"><i class="fas fa-trash"></i> Clear Post
+                            History</button>
+                        <button id="export-data" class="btn btn-outline"><i class="fas fa-file-export"></i> Export All
+                            Data</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> <span id="notification-text">Operation completed successfully!</span>
+    </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
