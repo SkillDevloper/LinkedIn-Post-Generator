@@ -33,7 +33,7 @@ A lightweight, AI-powered tool for creating professional LinkedIn posts with eas
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/linkedin-post-generator.git
+https://github.com/SkillDevloper/LinkedIn-Post-Generator.git
 ```
 
 Navigate to the project directory:
